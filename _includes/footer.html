@@ -1,44 +1,5 @@
-<!-- Footer -->
-<footer id="footer">
-    <div class="container">
-        <div class="row double">
-            <div class="6u">
-                <div class="row collapse-at-2">
-                    <div class="6u">
-                        <h3>My Sites</h3>
-                        <ul class="alt">
-                            <li><a href="https://www.maessigkeit.me/">Code: Mäßigkeit</a></li>
-                            <li><a href="#">Wechat Official Posts</a></li>
-                            <li><a href="#">Website ESU</a></li>
-                            <li><a href="#">Website SCAS</a></li>
-                        </ul>
-                    </div>
-                    <div class="6u">
-                        <h3>Links</h3>
-                        <ul class="alt">
-                            <li><a href="#">Lance's Pages</a></li>
-                            <li><a href="#">Joey Huang's Pages</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="6u">
-                <h2>Announcement</h2>
-                <p>Please do not repost any articles from this website.</p>
-                <ul class="icons">
-                    <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                    <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                    <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                    <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                    <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
-                </ul>
-            </div>
-        </div>
-        <ul class="copyright">
-            <li>&copy; Han Junhui 2024. All rights reserved.</li>
-            <li>Design: TEMPLATED</li>
-            <li>Images: Unsplash</li>
-            <li>Jekyll Template: Cloud Cannon</li>
-        </ul>
-    </div>
-</footer>
+{% include svg-icons.html %}
+
+{% if site.footer-text %}
+<p>{{ site.footer-text }}</p>
+{% endif %}

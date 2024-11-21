@@ -1,22 +1,30 @@
-<!--
-	Ion by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
 <head>
+  <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
 
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
-    <script src="{{ site.baseurl }}/js/jquery.min.js"></script>
-    <script src="{{ site.baseurl }}/js/skel.min.js"></script>
-    <script src="{{ site.baseurl }}/js/skel-layers.min.js"></script>
-    <script src="{{ site.baseurl }}/js/init.js"></script>
-    <noscript>
-        <link rel="stylesheet" href="{{ site.baseurl }}/css/skel.css" />
-        <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css" />
-        <link rel="stylesheet" href="{{ site.baseurl }}/css/style-xlarge.css" />
-    </noscript>
+  {% include meta.html %}
+  {% include fonts.html %}
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+  <link rel="shortcut icon" href="{{ site.favicon }}">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']]
+      }
+    });
+  </script>
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+
 </head>

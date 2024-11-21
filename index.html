@@ -1,104 +1,111 @@
 ---
-layout: landing-page
+layout: default
 ---
 
-		<!-- One -->
-			<section id="one" class="wrapper style1">
-				<header class="major">
-					<h2>We Have a Structural Ideas</h2>
-					<p>Three Major Objectives</p>
-				</header>
-				<div class="container">
-					<div class="row">
-						<div class="4u">
-							<section class="special box">
-								<i class="icon fa-area-chart major"></i>
-								<h3>Rebuilding the Student Union</h3>
-								<p>Eu non col commodo accumsan ante mi. Commodo consectetur sed mi adipiscing accumsan ac nunc tincidunt lobortis.</p>
-							</section>
-						</div>
-						<div class="4u">
-							<section class="special box">
-								<i class="icon fa-refresh major"></i>
-								<h3>Expand Student Activities</h3>
-								<p>Eu non col commodo accumsan ante mi. Commodo consectetur sed mi adipiscing accumsan ac nunc tincidunt lobortis.</p>
-							</section>
-						</div>
-						<div class="4u">
-							<section class="special box">
-								<i class="icon fa-cog major"></i>
-								<h3>Free Choice of Courses</h3>
-								<p>Eu non col commodo accumsan ante mi. Commodo consectetur sed mi adipiscing accumsan ac nunc tincidunt lobortis.</p>
-							</section>
-						</div>
-					</div>
-				</div>
-			</section>
-			
-		<!-- Two -->
-			<section id="two" class="wrapper style2">
-				<header class="major">
-					<h2>Two Core Measures</h2>
-					<p>Amet nisi nunc lorem accumsan</p>
-				</header>
-				<div class="container">
-					<div class="row">
-						<div class="6u">
-							<section class="special">
-								<a href="#" class="image fit"><img src="images/pic01.jpg" alt="" /></a>
-								<h3>Strengthen Student Communication</h3>
-								<p>Eget mi ac magna cep lobortis faucibus accumsan enim lacinia adipiscing metus urna adipiscing cep commodo id. Ac quis arcu amet. Arcu nascetur lorem adipiscing non faucibus odio nullam arcu lobortis. Aliquet ante feugiat. Turpis aliquet ac posuere volutpat lorem arcu aliquam lorem.</p>
-								<ul class="actions">
-									<li><a href="#" class="button alt">Learn More</a></li>
-								</ul>
-							</section>
-						</div>
-						<div class="6u">
-							<section class="special">
-								<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-								<h3>Collect Opinions</h3>
-								<p>Eget mi ac magna cep lobortis faucibus accumsan enim lacinia adipiscing metus urna adipiscing cep commodo id. Ac quis arcu amet. Arcu nascetur lorem adipiscing non faucibus odio nullam arcu lobortis. Aliquet ante feugiat. Turpis aliquet ac posuere volutpat lorem arcu aliquam lorem.</p>
-								<ul class="actions">
-									<li><a href="#" class="button alt">Learn More</a></li>
-								</ul>
-							</section>
-						</div>
-					</div>
-				</div>
-			</section>
+{% if site.posts.size == 0 %}
+  <h2>No post found</h2>
+{% endif %}
 
-		<!-- Three -->
-			<section id="three" class="wrapper style1">
-				<div class="container">
-					<div class="row">
-						<div class="8u">
-							<section>
-								<h2>The Team</h2>
-								<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-								<p>Vis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat commodo. Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan commodo odio cubilia ac eu interdum placerat placerat arcu commodo lobortis adipiscing semper ornare pellentesque.</p>
-							</section>
-						</div>
-						<div class="4u">
-							<section>
-								<h3>Our Experience</h3>
-								<p>Feugiat amet accumsan ante aliquet feugiat accumsan. Ante blandit accumsan eu amet tortor non lorem felis semper. Interdum adipiscing orci feugiat penatibus adipiscing col cubilia lorem ipsum dolor sit amet feugiat consequat.</p>
-								<ul class="actions">
-									<li><a href="#" class="button alt">Learn More</a></li>
-								</ul>
-							</section>
-							<hr />
-							<section>
-								<h3>Others</h3>
-								<ul class="alt">
-									<li><a href="#">Erat blandit risus vis adipiscing</a></li>
-									<li><a href="#">Tempus ultricies faucibus amet</a></li>
-									<li><a href="#">Arcu commodo non adipiscing quis</a></li>
-									<li><a href="#">Accumsan vis lacinia semper</a></li>
-								</ul>
-							</section>
-						</div>
-					</div>
-				</div>
-			</section>			
-			
-		
+<div class="posts">
+  
+  {% for post in site.posts %}
+    {% if post.pinned==true %}
+      <article class="post pinned">
+        <h1>
+            <span title="pinned"><i data-feather="anchor"></i></span><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+        </h1>
+
+        <div clsss="meta">
+          
+          <span class="author">
+            {{ post.author }}
+          </span>
+
+          <span class="date">
+            {{ post.date | date: "%Y-%m-%d" }}
+          </span>
+
+          <ul class="tag">
+            {% for tag in post.tags %}
+            <li>
+              <a href="{{ site.url }}{{ site.baseurl }}/tags#{{ tag }}">
+                {{ tag }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <script>
+            feather.replace()
+          </script>
+        </div>
+
+       <div class="post-excerpt">
+          {%   if post.content contains site.excerpt_separator or post.content != post.excerpt %}{{ post.excerpt }}
+          {%   else %}{{ post.content | lstrip | split: "
+" | first }}{% endif %}
+          <p>
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">Read More</a>
+          </p>
+        </div>
+    </article>
+    {% endif %}
+  {% endfor %}
+  
+  {% for post in paginator.posts %}
+    {% unless post.pinned %}
+    <article class="post">
+      <h1>
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      </h1>
+
+      <div clsss="meta">
+        
+        <span class="author">
+          {{ post.author }}
+        </span>
+            
+        <span class="date">
+          {{ post.date | date: "%Y-%m-%d" }}
+        </span>
+
+        <ul class="tag">
+          {% for tag in post.tags %}
+          <li>
+            <a href="{{ site.url }}{{ site.baseurl }}/tags#{{ tag }}">
+              {{ tag }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="post-excerpt">
+          {%   if post.content contains site.excerpt_separator or post.content != post.excerpt %}{{ post.excerpt }}
+          {%   else %}{{ post.content | lstrip | split: "
+" | first }}{% endif %}
+          <p>
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">Read More</a>
+          </p>
+        </div>
+    </article>  
+    {% endunless %}
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <span class="prev">
+      <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="prev">
+        ← 上一页
+      </a>
+    </span>
+  {% endif %}
+  {% if paginator.next_page %}
+    <span class="next">
+      <a href="{{ site.baseurl}}{{ paginator.next_page_path }}" class="next">
+        下一页 →
+      </a>
+    </span>
+  {% endif %}
+</div>
